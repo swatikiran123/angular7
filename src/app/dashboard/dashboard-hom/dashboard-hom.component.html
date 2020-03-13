@@ -1,0 +1,112 @@
+<br />
+virtual scroll
+<!-- <div class="container"> -->
+<cdk-virtual-scroll-viewport [itemSize]="20" class="viewport">
+   <div *cdkVirtualFor="let size of fixedSizeData; let i = index" templateCacheSize="10">
+      Item {{i}}
+   </div>
+</cdk-virtual-scroll-viewport>
+<!-- </div> -->
+<br><br>
+
+drag-drop
+<br />
+
+<!-- basic drag-drop can drag and drop any where -->
+<div class="example-box" cdkDrag>
+   Drag me around
+</div>
+<br />
+
+<!-- drag - drop x,y -axis -->
+<div class="example-box" cdkDragLockAxis="y" cdkDrag>
+   I can only be dragged up/down
+</div>
+
+<div class="example-box" cdkDragLockAxis="x" cdkDrag>
+   I can only be dragged left/right
+</div>
+<br />
+
+<!-- drag-drop within boundry -->
+<div class="example-boundary">
+   <div class="example-box" cdkDragBoundary=".example-boundary" cdkDrag>
+      I can only be dragged within the dotted container
+   </div>
+</div>
+<br />
+
+<!-- Drag&Drop connected sorting -->
+<!-- <div class="example-container">
+   <h2>To do</h2>
+
+   <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo" [cdkDropListConnectedTo]="[doneList]" class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+   </div>
+</div>
+
+<div class="example-container">
+   <h2>Done</h2>
+
+   <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[todoList]" class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
+   </div>
+</div> -->
+
+<!-- Drag&Drop connected sorting group -->
+<!-- <div cdkDropListGroup>
+      <div class="example-container">
+        <h2>To do</h2>
+    
+        <cdkDropList
+          
+          [cdkDropListData]="todo"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+        </cdkDropList>
+      </div>
+    
+      <div class="example-container">
+        <h2>Done</h2>
+    <cdkDropList
+          [cdkDropListData]="done"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
+        </cdkDropList>
+      </div>
+    </div> -->
+
+<!-- Drag&Drop custom placeholer, with preview,with felayed dragging, we can disable,we can drag with handle,horizantal sorting,sorting inaccending order-->
+
+
+<b>Template Driven Form</b>
+<form #userlogin="ngForm" (ngSubmit)="onClickSubmit(userlogin.value)">
+   <input type="text" name="emailid" placeholder="emailid" ngModel>
+   <br />
+   <input type="password" name="passwd" placeholder="passwd" ngModel>
+   <br />
+   <input type="submit" value="submit">
+</form>
+<br/>
+<br/>
+<br/>
+
+<b> Model Driven Form </b>
+<div> 
+   <form [formGroup] = "formdata" (ngSubmit) = "onClickSubmit(formdata.value)" > 
+      <input type = "text" class = "fortextbox" name = "emailid" placeholder = "emailid" 
+         formControlName = "emailid"> 
+      <br/> 
+      
+      <input type = "password" class = "fortextbox" name = "passwd" 
+         placeholder = "passwd" formControlName = "passwd"> 
+      <br/>
+      
+      <input type = "submit" class = "forsubmit" value = "Log In"> 
+   </form>
+</div> 
+<p> Email entered is : {{emailid}} </p>
